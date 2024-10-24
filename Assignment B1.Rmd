@@ -1,0 +1,50 @@
+---
+title: "Assignment B1?"
+author: "Julia D"
+date: "2024-10-24"
+output: github_document
+---
+## Assignment B1
+```{r}
+#Installing library
+library(tidyverse)
+library(palmerpenguins)
+
+
+```
+
+### Excerise 1
+Creating a function, doesn't have to be complex or serious. The function **should** be flexible. 
+My idea is to create a function that will be able to group categories and calculate the mean as long as it is a _numeric variable_
+
+```{r}
+
+```
+
+
+### Excerise 2
+Document the function
+```{r}
+
+
+```
+
+
+### Excerise 3
+Examples of how this function may be used
+```{r}
+
+
+```
+
+
+### Excerise 4
+Testing the function 
+```{r}
+
+
+```
+
+
+
+
