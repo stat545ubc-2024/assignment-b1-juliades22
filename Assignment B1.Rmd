@@ -1,0 +1,9 @@
+---
+title: "Assignment B1?"
+author: "Julia D"
+date: "2024-10-24"
+output: html_document
+---
+## Assignment B1
+
+### Task 1
