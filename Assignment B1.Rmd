@@ -9,42 +9,85 @@ output: github_document
 #Installing library
 library(tidyverse)
 library(palmerpenguins)
-
+library(gapminder)
+library(testthat)
+library(devtools)
 
 ```
 
-### Excerise 1
+### Excerise 1 & 2
 Creating a function, doesn't have to be complex or serious. The function **should** be flexible. 
 My idea is to create a function that will be able to group categories and calculate the mean as long as it is a _numeric variable_
+Documenting a function, using roxygen2 tags
 
 ```{r}
+#'Grouped Means
+#'@description
+#'This is a function that groups by a variable and calculates the mean
+#'@param Data Data is the dataframe 
+#'@param group_var is the grouping variable you want to group by
+#'@param mean_var is the column you want the means for 
+#'@details This function will return an error for any non-numeric variables in the mean_var param. This function will automatically remove NA variables
+#'@returns This function returns a tibble with two columns of the catgeories grouped by and the means for each 
+#'@examples for palmer penguins dataset: group_mean(penguins, species, bill_length_mm), returns mean bill length by species.
+
+
+group_mean <-function(data, group_var, mean_var) {
+  if(!is.numeric(data[[deparse(substitute(mean_var))]])) {
+    stop('Sorry, this function requires a numeric variable')
+    }
+  data %>%
+    group_by({{group_var}}) %>%
+     summarise(mean = mean({{mean_var}}, na.rm = TRUE))
+  }
 
 ```
-
-
-### Excerise 2
-Document the function
-```{r}
-
-
-```
-
 
 ### Excerise 3
-Examples of how this function may be used
+#### Examples of how this function may be used
+Example 1: 
 ```{r}
-
+#Finding the average bill length by species in the penguins dataset
+answer1.0 <-group_mean(penguins, species, bill_length_mm)
+print(answer1.0)
 
 ```
+Example 2: 
+```{r}
+#Finding the average life expectancy by country in the gapminder dataset
+answer2.0 <-group_mean(gapminder, country, lifeExp)
+print(answer2.0)
 
+```
+Example3
+```{r}
+#Finding the average GDP per capita by continent in the gapminder dataset
+answer3.0 <-group_mean(gapminder, continent, gdpPercap)
+print(answer3.0)
+
+```
 
 ### Excerise 4
 Testing the function 
 ```{r}
+#I want to test that the function is running as expected and does not conduct an analysis on non-numeric variables. 
+group_mean <-function(data, group_var, mean_var) {
+  if(!is.numeric(data[[deparse(substitute(mean_var))]])) {
+    stop('Sorry, this function requires a numeric variable')
+    }
+  data %>%
+    group_by({{group_var}}) %>%
+     summarise(mean = mean({{mean_var}}, na.rm = TRUE))
+  }
 
+test_that("Testing group_mean function", {
+  expect_type(group_mean, "closure")
+  expect_error(group_mean(data, group_var, (!is.numeric(data[[deparse(substitute(mean_var))]]))))
+  expect_visible(group_mean)
+ 
+})
 
 ```
-
 
 
 
