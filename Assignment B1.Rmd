@@ -1,5 +1,5 @@
 ---
-title: "Assignment B1?"
+title: "Assignment B1"
 author: "Julia D"
 date: "2024-10-24"
 output: github_document
@@ -21,12 +21,12 @@ My idea is to create a function that will be able to group categories and calcul
 Documenting a function, using roxygen2 tags
 
 ```{r}
-#'Grouped Means
+#'@Title Grouped Means
 #'@description
-#'This is a function that groups by a variable and calculates the mean
+#'This is a function that groups by a variable and calculates the mean for any specified variables that fit the parameters.
 #'@param Data Data is the dataframe 
 #'@param group_var is the grouping variable you want to group by
-#'@param mean_var is the column you want the means for 
+#'@param mean_var is the column you want the means for, must be numeric data
 #'@details This function will return an error for any non-numeric variables in the mean_var param. This function will automatically remove NA variables
 #'@returns This function returns a tibble with two columns of the catgeories grouped by and the means for each 
 #'@examples for palmer penguins dataset: group_mean(penguins, species, bill_length_mm), returns mean bill length by species.

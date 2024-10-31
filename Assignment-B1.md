@@ -1,4 +1,4 @@
-Assignment B1?
+Assignment B1
 ================
 Julia D
 2024-10-24
